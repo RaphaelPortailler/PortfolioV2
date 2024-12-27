@@ -1,0 +1,160 @@
+/* --------------- ALL --------------- */
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.center{
+    text-align: center;
+}
+
+.appear{
+    opacity: 0;
+    transform: translateY(80px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.appear.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* --------------- SECTION CONTACT --------------- */
+#sectContact{
+    width: 80%;
+    margin: auto;
+    #h1Contact{
+        color: #4A5B4A;
+        font-size: 2rem;
+        text-align: center;
+        padding: 1%;
+        margin: 30px 0 30px 0;
+    }
+    .flash-messages{
+        .alert-success {
+            background-color: #4A5B4A;
+            text-align: center;
+            padding: 1%;
+            color: white;
+            font-family: "Montserrat", serif;
+            width: 40%;
+            margin: auto;
+            border-radius: 10px;
+        }
+    }
+    form{
+        margin-bottom: 50px;
+    }
+}
+
+.label{
+    position: absolute;
+    top: -5px;
+    left: 10px;
+    transition: .5s;
+    pointer-events: none;
+    font-family: "Montserrat", serif;
+}
+
+.inputWrapper{
+    position: relative;
+    margin: 30px auto;
+    #labelMessage{
+        position: absolute;
+        left: 3%;
+        top: -15%;
+        font-family: "Montserrat", serif;
+    }
+    #contact_message{
+        border: solid 1px #4A5B4A;
+        width: 250px;
+    }
+}
+
+input{
+    border:none;
+    border-bottom: solid 1px #4A5B4A;
+    background-color: transparent;
+    width: 100%;
+}
+
+input, .label{
+    display: block;
+    width:100%;
+    color: black;
+}
+
+input:not(:placeholder-shown) + .label, input:focus + .label{
+    transform: translateY(-30px);
+}
+
+/* --------------- BUTTON SEND --------------- */
+.button{
+    background-color: #4A5B4A;
+    color: #BFC0C0;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: -4px 4px #A1B2B0;
+    &:active{
+        box-shadow: -3px 0 #A1B2B0;
+    }
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+/* ---------------------------------- RESPONSIVE TABLET PORTRAIT -------------------------------- */
+/* ---------------------------------------------------------------------------------------------- */
+@media screen and (min-width:767px) and (max-width:1024px) {
+    /* --------------- SECTION CONTACT --------------- */
+    #sectContact {
+        width: 90%;
+        #h1Contact {
+            font-size: 3rem;
+        }
+    }
+
+    /* --------------- INPUT MESSAGE --------------- */
+    .inputWrapper{
+        #contact_message{
+            width: 450px;
+        }
+    }
+
+
+}
+
+/* -------------------------------------------------------------------------------------- */
+/* ---------------------------------- RESPONSIVE DESKTOP -------------------------------- */
+/* -------------------------------------------------------------------------------------- */
+
+@media screen and (min-width:1024px) {
+    /* --------------- SECTION CONTACT --------------- */
+    #sectContact {
+        height: 90vh;
+        #h1Contact {
+            font-size: 4rem;
+            font-weight: 400;
+        }
+    }
+
+    /* --------------- INPUT MESSAGE --------------- */
+    .inputWrapper{
+        #contact_message{
+            width: 550px;
+        }
+    }
+
+
+}
