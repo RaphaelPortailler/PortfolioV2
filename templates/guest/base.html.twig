@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Raphael Portailler">
+        <meta name="description" content="Developpeur Web / Web Mobile - Portailler Raphael">
+        <!-- TITLE -->
+        <title>
+            Raphael Portailler - D.W.W.M
+        </title>
+        <!-- LOGO -->
+        <link rel="icon" href="{{ asset('assets/img/logo7.svg') }}">
+        <!-- CSS -->
+        <link rel="stylesheet" href="{{ asset('assets/css/guest/style.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('assets/css/guest/contactStyle.css') }}">
+        {% endblock %}
+        <!-- JQUERY -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <!-- GOOGLE FONT -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+    {# -------------------- BODY -------------------- #}
+    <body>
+        {# -------------------- LOADER -------------------- #}
+        <div id="loader">
+            <div class="spinner"></div>
+            <span id="loading-percentage"></span>
+        </div>
+        {# -------------------- HEADER -------------------- #}
+        <header class="montserrat">
+            <nav>
+                <ul>
+                    <li>
+                        <a id="aboutLink" href="" data-text="About" class="text3d">About</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('projects') }}" data-text="Projects" class="text3d">Projects</a>
+                    </li>
+                    <li>
+                        <a id="linkContact" href="" data-text="Contact" class="text3d">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <hr>
+        {% block main %}
+            {# -------------------- MAIN -------------------- #}
+            <main class="montserrat">
+                {# -------------------- LOGO -------------------- #}
+                <div id="divLogo">
+                    <img class="logo3d" src="{{ asset('assets/img/logo7.svg') }}" alt="">
+                </div>
+                {# -------------------- ABOUT -------------------- #}
+                <h1 id="h1About" class="appear">About</h1>
+                <section id="sectAbout">
+                    <article>
+                        <p class="appear">
+                            <span class="appear">Bonjour !</span>
+                            <span class="paragraph appear">Je m’appelle Raphaël et je suis Développeur Web/Web Mobile
+                            basé a Mérignac. Passionné par le code et les interfaces élégantes, je suis diplômé depuis octobre 2024 dans la création de sites web modernes et fonctionnels. Mes compétences principales
+                            incluent HTML, CSS, JavaScript, PHP, SYMFONY, MySQL. J’aime particulièrement donner vie aux designs
+                            avec des animations et interactions fluides.</span>
+
+                            <span class="paragraph appear">Mon approche est centrée sur l’utilisateur, chaque projet est pour moi l’occasion
+                            de créer une expérience intuitive. J’ai eu la chance de travailler sur
+                            des projets variés, du site vitrine au e-commerce, et je suis toujours ouvert à
+                            de nouvelles collaborations et défis.</span>
+
+                            <span class="paragraph appear">N’hésitez pas à parcourir mes <a class="linkProjects" href="{{ path('projects') }}">projets</a> ou à me
+                                <a class="linkContact" href="#sectContact">contacter</a> directement.</span>
+                            <span class="appear">À bientôt !</span>
+                        </p>
+                    </article>
+                </section>
+                <hr>
+                {# -------------------- CONTACT -------------------- #}
+                <section id="sectContact">
+                    <h2 id="h1Contact" class="appear" data-text="Contact">Contact</h2>
+
+                    {# -------------------- MESSAGES FLASH -------------------- #}
+                    <div class="flash-messages">
+                        {% for label, messages in app.flashes %}
+                            {% for message in messages %}
+                                <div class="alert alert-success">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+
+                    {# -------------------- FORM -------------------- #}
+                    {{ form_start(form) }}
+                    <div class="flex appear">
+                        {# -------------------- NAME -------------------- #}
+                        <div class="inputWrapper">
+                            {{ form_widget(form.name, {'attr': {'placeholder': ' '}}) }}
+                            {{ form_label(form.name) }}
+                            {{ form_errors(form.name) }}
+                        </div>
+                        {# -------------------- EMAIL -------------------- #}
+                        <div class="inputWrapper">
+                            {{ form_widget(form.email, {'attr': {'placeholder': ' '}}) }}
+                            {{ form_label(form.email) }}
+                            {{ form_errors(form.email) }}
+                        </div>
+                        {# -------------------- SUBJECT -------------------- #}
+                        <div class="inputWrapper">
+                            {{ form_widget(form.subject, {'attr': {'placeholder': ' '}}) }}
+                            {{ form_label(form.subject) }}
+                            {{ form_errors(form.subject) }}
+                        </div>
+                        {# -------------------- MESSAGE -------------------- #}
+                        <div class="inputWrapper">
+                            {{ form_label(form.message, null, {'attr': {'for': 'inputMessage'}}) }}
+                            {{ form_widget(form.message, {'attr': {'placeholder': ' ', 'id': 'labelMessage'}}) }}
+                            {{ form_errors(form.message) }}
+                        </div>
+                    </div>
+                    {# -------------------- SUBMIT -------------------- #}
+                    <div class="center">
+                        {{ form_widget(form.submit) }}
+                    </div>
+                    {{ form_end(form) }}
+                </section>
+            </main>
+        {% endblock %}
+
+        {# -------------------- FOOTER -------------------- #}
+        <footer class="montserrat">
+            <nav>
+                <ul>
+                    <li><a href="">© Copyright</a></li>
+                    <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/RaphaelPortailler"><i class="fa-brands fa-github"></i></a></li>
+                    <li><a href=""><i class="fa-brands fa-linkedin"></i></a></li>
+                </ul>
+            </nav>
+        </footer>
+        {# -------------------- SCROLL TOP -------------------- #}
+        <div id="scrollTopButton" class="scroll-top">
+            <i id="arrowTop" class="fa fa-arrow-up"></i>
+        </div>
+    </body>
+</html>
+
+
+{# -------------------- SCRIPT JS -------------------- #}
+<script src="{{ asset('assets/js/loader.js') }}"></script>
+<script src="{{ asset('assets/js/scrollToSection.js') }}"></script>
+<script src="{{ asset('assets/js/scrollTop.js') }}"></script>
+<script src="{{ asset('assets/js/shadowEffect.js') }}"></script>
+<script src="{{ asset('assets/js/span.js') }}"></script>
+<script src="{{ asset('assets/js/threeDeffect.js') }}"></script>
+<script src="{{ asset('assets/js/footerFixed.js') }}"></script>
+<script src="{{ asset('assets/js/observer.js') }}"></script>

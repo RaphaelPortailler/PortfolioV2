@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Raphael Portailler">
+        <meta name="description" content="Developpeur Web / Web Mobile - Portailler Raphael">
+        <!-- TITLE -->
+        <title>Raphael Portailler - My Projects</title>
+        <!-- LOGO -->
+        <link rel="icon" href="{{ asset('assets/img/logo7.svg') }}">
+        <!-- CSS -->
+        <link rel="stylesheet" href="{{ asset('assets/css/guest/projectsStyle.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" >
+        <!-- GOOGLE FONT -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+
+<body>
+{# -------------------- LOADER -------------------- #}
+<div id="loader">
+    <h1 id="loaderText" class="montserrat">My Projects</h1>
+</div>
+    {# -------------------- MAIN -------------------- #}
+    <main>
+        {# -------------------- PROJECTS -------------------- #}
+        <h1 id="h1MyProjects" class="montserrat" data-text="My Projects">My Projects</h1>
+
+        {# -------------------- LINK BACK HOMEPAGE -------------------- #}
+        <a id="btnBackHome" class="montserrat" href="{{ path('home') }}">Back to Homepage</a>
+
+        {# -------------------- SEECTION WITH ALL -------------------- #}
+        <section id="sectProjects">
+            {# -------------------- CARROUSEL PROJECTS -------------------- #}
+            <section class="container">
+                <article class="slide">
+                    {% for project in projects %}
+                        <div class="item" style="background-image: url('{{ asset('assets/img/' ~ project.picture) }}');">
+                            <div class="content montserrat" style="background-color: {{ project.color }}">
+                                <p class="name">{{ project.name }}</p>
+                                <p class="descript">{{ project.littleDescription }}</p>
+                                <a class="button show-project" style="color: {{ project.color }}" href="#sectDetails" data-id="{{ project.id }}">En savoir plus</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </article>
+                <div class="button2">
+                    <button class="prec"><i class="fa-solid fa-arrow-left"></i></button>
+                    <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </section>
+            {# -------------------- SHOW PROJECTS -------------------- #}
+            <section id="sectDetails">
+                <div id="detailsContent" class="details-content montserrat">
+                    <p id="projectName"></p>
+                    <p id="projectDescription"></p>
+                    <button id="closeDetails">Close</button>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    {# -------------------- FOOTER -------------------- #}
+    <footer class="montserrat">
+        <nav>
+            <ul>
+                <li><a class="font13px" href="">© Copyright</a></li>
+                <li><a href="https://github.com/RaphaelPortailler"><i class="fa-brands fa-github"></i></a></li>
+                <li><a href=""><i class="fa-brands fa-linkedin"></i></a></li>
+            </ul>
+        </nav>
+    </footer>
+
+    {# -------------------- SCRIPT JS -------------------- #}
+    <script>
+        const projectsData = {{ projects|json_encode|raw }};
+    </script>
+
+    <script src="{{ asset('assets/js/loaderProjects.js') }}"></script>
+    <script src="{{ asset('assets/js/precNext.js') }}"></script>
+    <script src="{{ asset('assets/js/showProjects.js') }}"></script>
+    <script src="{{ asset('assets/js/shadowEffect.js') }}"></script>
+</body>
+</html>
