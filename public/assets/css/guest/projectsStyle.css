@@ -162,6 +162,7 @@ main{
                     border: none;
                     border-radius: 4px;
                     box-shadow: -4px 4px #A1B2B0;
+                    font-weight: bold;
                     &:active{
                         box-shadow: -3px 0 #A1B2B0;
                     }
